@@ -12,9 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/slc-portal': {
-        // target: 'http://192.168.86.236:18688/',
-        // target: 'http://192.168.8.35:10031/',
-        target: 'http://192.168.180.35:18688/',
+        target: 'http://192.168.180.110:18688/',
         changeOrigin: true,
         pathRewrite: {
           '^/slc-portal': '/slc-portal'

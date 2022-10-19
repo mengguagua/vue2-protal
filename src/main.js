@@ -8,7 +8,9 @@ import zjport from 'zj-port';
 import mixin from '@/plugins/mixin/mixin';
 // 扫描components下所有组件进行注册，优化import（build时按依赖引用也不会有冗余）
 import './components/global.js';
+import mojs from '@mojs/core'
 
+Vue.mojs = mojs;
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);

@@ -4,6 +4,7 @@ const index = () => import('@/pages/index');
 const news = () => import('@/pages/news');
 const newsDetail = () => import('@/pages/newsDetail');
 const notice = () => import('@/pages/notice');
+const mojs = () => import('@/pages/mojs');
 
 
 Vue.use(Router)
@@ -26,6 +27,10 @@ export default new Router({
       path: '/notice',
       name: 'notice',
       component: notice,
+    }, {
+      path: '/mojs',
+      name: 'mojs',
+      component: mojs,
     },
   ],
   mode: 'hash',
