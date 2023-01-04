@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="10px" viewBox="0 0 150 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>标题装饰</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="嘉兴跨电商综合试验区首页" transform="translate(-645.000000, -565.000000)">
+            <g id="编组" transform="translate(645.000000, 565.000000)">
+                <line x1="0" y1="5" x2="50" y2="5" id="路径-6" stroke="#ABD6FD"></line>
+                <line x1="100" y1="5" x2="150" y2="5" id="路径-6备份" stroke="#ABD6FD"></line>
+                <circle id="椭圆形" fill="#4485DD" cx="75" cy="5" r="5"></circle>
+                <circle id="椭圆形备份" fill="#4485DD" cx="63" cy="5" r="3"></circle>
+                <circle id="椭圆形备份-2" fill="#4485DD" cx="87" cy="5" r="3"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

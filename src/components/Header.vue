@@ -1,50 +1,54 @@
 <!-- 头部 -->
 <template lang="pug">
-  div.menu-line
-    div.logo DEMO-TEMPLATE
-    div.menu-item-line
-      div.menu-item(v-for="(item, index) in menuItems" :key="`menu-${index}`")
-        router-link(:to="item.url" v-if="index == 0") {{item.label}}
-        div(@click="goUrl(index)" v-if="index != 0") {{item.label}}
-      div.login(@click="goLogin" v-if="!user && !user.userName") 登录
-      div.register(@click="goRegister" v-if="!user && !user.userName") 注册
-      div(v-if="user && user.userName") 用户：{{user.userName}}
+  div
+    div.top-line
+      div.sub-title 您好！欢迎访问模板门户!
+      div.login-text
+        span.login(@click="openWin") 模板门户
+        span.login(@click="goLogin") 登录
+    div.menu-line
+      div.logo
+        div 模板门户
+        div.en TEMPLATE PILOT
+      div.menu-item-line
+        div.menu-item(v-for="(item, index) in menuItems" @click="goUrl(index)" :class="(pageLocation.href.indexOf(item.url) != -1 && item.url != '') ? 'selected' : ''")
+          div {{item.label}}
 </template>
 
 <script>
+import {userLogin} from '@/service/interface';
 export default {
   name: 'Header',
   data() {
     return {
+      pageLocation: location,
+      currentIndex: '0',
       user: '',
       menuItems: [
         {
           label: '首页',
-          url: '/',
+          url: '/index',
         }, {
-          label: '菜单2',
-          url: '',
+          label: '菜单一',
+          url: '/onlineCredit',
         }, {
-          label: '菜单3',
-          url: '',
+          label: '菜单二',
+          url: '/operate',
         }, {
-          label: '菜单4',
-          url: '',
+          label: '菜单三',
+          url: 'http://www.baidu.com/',
         }, {
-          label: '菜单5',
-          url: '',
+          label: '菜单四',
+          url: '/logistics',
         }, {
-          label: '菜单6',
-          url: '',
+          label: '菜单五',
+          url: '/infoShare',
         }, {
-          label: '菜单7',
-          url: '',
+          label: '菜单六',
+          url: '/riskControl',
         }, {
-          label: '菜单8',
-          url: '',
-        }, {
-          label: '菜单9',
-          url: '',
+          label: '菜单七',
+          url: '/monitor',
         }
       ],
     };
@@ -53,34 +57,79 @@ export default {
   },
   methods: {
     goUrl(index) {
-      window.open(this.menuItems[index].url);
+      console.log(index);
+      this.currentIndex = index;
+      if (index == 3) {
+        window.open(this.menuItems[index].url);
+      } else {
+        // 防止重复点击
+        if (!~location.href.indexOf(this.menuItems[index].url)) {
+          this.$router.push(this.menuItems[index].url);
+        }
+      }
     },
-    goLogin() {
+    openWin() {
+      window.open('http://www.baidu.com/');
     },
-    goRegister() {
+    async goLogin() {
+      // let resp = await userLogin();
+      // window.open(resp)
+      // console.log('resp',resp);
     },
   },
   mounted() {
-    let userStr = localStorage.getItem('qzUser');
-    this.user = JSON.parse(userStr);
-    console.log('user',this.user);
+    // let userStr = localStorage.getItem('qzUser');
+    // this.user = JSON.parse(userStr);
+    // console.log('user',this.user);
   },
 };
 </script>
 
 <style lang="less">
+.top-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  //margin-top: 10px;
+  padding-top: 10px;
+  .sub-title {
+    padding-left: 120px;
+    color: rgba(255,255,255,1);
+    font-family: SourceHanSansCN-Bold;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .login-text {
+    padding-right: 120px;
+    color: rgba(255,255,255,1);
+    font-family: SourceHanSansCN-Bold;
+    font-size: 14px;
+    font-weight: 500;
+    .login {
+      padding: 4px 12px;
+      margin-left: 20px;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0px 0px 1px 1px #efefef;
+      }
+    }
+  }
+}
+
 .menu-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,0.6);
   height: 80px;
   .logo {
     padding-left: 120px;
     color: rgba(255,255,255,1);
     font-family: SourceHanSansCN-Bold;
-    font-size: 30px;
+    font-size: 18px;
     font-weight: 700;
+    .en {
+      font-size: 8px;
+    }
   }
   .menu-item-line {
     display: flex;
@@ -90,16 +139,23 @@ export default {
     font-family: SourceHanSansCN-Regular;
     font-size: 14px;
     .menu-item {
-      margin-right: 24px;
+      margin-right: 4px;
       cursor: pointer;
-      height: 80px;
       display: flex;
       align-items: center;
-      transition: 0.1s;
+      transition: 0.2s;
       border-bottom: 1px solid transparent;
+      border-radius: 4px;
+      padding: 4px 16px;
+      font-weight: 600;
     }
     .menu-item:hover {
-      border-bottom: 1px solid #fff;
+      background: #2A80EF;
+      border-radius: 4px;
+    }
+    .selected {
+      background: #2A80EF;
+      border-radius: 4px;
     }
     .login {
       display: flex;

@@ -45,30 +45,6 @@ export default {
     };
   },
   methods: {
-    goProduct() {
-      window.open('http://zj.singlewindow.cn/hyn/#/products/list');
-    },
-    goSmartebao() {
-      window.open('http://client.smartebao.com');
-    },
-    goDeclare() {
-      window.open('https://zk.smartebao.com/#/importAndExport/export/declare');
-    },
-    goExportStandBook() {
-      window.open('https://zk.smartebao.com/#/importAndExport/export/exportStandBook');
-    },
-    goExportEntrustment() {
-      window.open('https://zk.smartebao.com/#/importAndExport/entrustment/exportEntrustment');
-    },
-    goHdSmartebaoFreight() {
-      window.open('https://booking.smartebao.com/freight-rate/freight-rate-search/index');
-    },
-    goHdSmartebao() {
-      window.open('https://booking.smartebao.com/comprehensive-query/logistics');
-    },
-    goSsoSmartebao() {
-      window.open('https://zk.smartebao.com/bsb-webapp-index/#/dataCenter/consultation/government');
-    },
     goIndex() {
       this.$router.push('/');
     },
@@ -179,6 +155,24 @@ export default {
     // 对象属性设置为空 （在新建弹窗，对象置空时用到）
     objectAttributeReset(obj) {
       Object.keys(obj).forEach(key => { obj[key] = ''; });
+    },
+    getQueryStringArgs() {
+      let queryData = '';
+      if (location.search) {
+        queryData = location.search;
+      } else if (location.hash) {
+        queryData = '?' + location.hash.split('?')[1];
+      }
+      let qs = (queryData.length > 0 ? queryData.substring(1) : '');
+      let args = [];
+      for (let item of qs.split('&').map( kv => kv.split('=') )) {
+        let name = decodeURIComponent(item[0]);
+        let value = decodeURIComponent(item[1]);
+        if (name) {
+          args[name] = value;
+        }
+      }
+      return args;
     },
   }
 };

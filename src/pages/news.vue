@@ -73,7 +73,7 @@ export default {
 <style lang="less" scoped>
 .top-image {
   position: relative;
-  background: url('~@/assets/images/banner2.jpg') no-repeat;
+  background: url('~@/assets/images/banner-index.png') no-repeat;
   background-size: 100% 100%;
   height: 540px;
   .title {

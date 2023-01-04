@@ -26,8 +26,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 #app {
   overflow-x: hidden;
+}
+body {
+  font-family: 'Nunito Sans', BlinkMacSystemFont, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', sans-serif;
 }
 </style>

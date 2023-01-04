@@ -33,7 +33,7 @@ Api.install = () => {
         localStorage.removeItem('qzUser');
       }
       // 请求成功，但是操作不成功时显示后端返回的错误信息
-      if (res.data.code != '200' && res.config.url !== '/slc-portal/user/getUserInfo') {
+      if (res.data.status != '0' && res.config.url !== '/slc-portal/user/getUserInfo') {
         // console.log('res', res)
         Message({
           message: res.data.msg || '网络拥堵，请稍后重试',
@@ -54,17 +54,6 @@ Api.install = () => {
     }
   );
 
-  // 全局接口列表
-  Vue.prototype.Api = {
-    // 查询用户信息
-    queryUserInfo() {
-      return Vue.axios.post('/fe/sys/user');
-    },
-    // 查询菜单信息
-    queryMenu() {
-      return Vue.axios.post('/fe/sys/menu');
-    },
-  };
 };
 
 export default Api;
